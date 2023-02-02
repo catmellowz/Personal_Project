@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { ToastContainer } from 'react-toastify';
+// import Spinner from './components/Spinner';
+// import useLoading from './hooks/useLoading';
 
-function App() {
+import Router from './routes/Router';
+
+export default function App() {
+  // const { loading } = useLoading();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* {loading && <Spinner />} */}
+      <Router />;
+      {/* <ToastContainer
+        autoClose='3000'
+        theme='light'
+        position='bottom-center'
+      /> */}
+    </>
   );
 }
-
-export default App;
