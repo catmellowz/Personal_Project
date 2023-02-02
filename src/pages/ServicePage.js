@@ -1,3 +1,12 @@
+import Nav from '../components/Home/Navbar';
+import Footer from '../components/Home/Footer';
+
 export default function ServicePage() {
-  return <div>ServicePage</div>;
+  return (
+    <div>
+      <Nav />
+
+      <Footer />
+    </div>
+  );
 }

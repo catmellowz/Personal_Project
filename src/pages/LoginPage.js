@@ -1,4 +1,4 @@
-import logo from '../icons/logo.jpeg';
+import logo from '../icons/logo.png';
 import loginPic from '../icons/login-pic.jpeg';
 import Input from '../components/Input';
 import Button from '../components/Button';
