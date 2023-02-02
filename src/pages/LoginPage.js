@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import logo from '../icons/logo.png';
 import loginPic from '../icons/login-pic.jpeg';
 import Input from '../components/Input';
@@ -5,6 +7,14 @@ import Button from '../components/Button';
 import RegisterModal from '../components/Register/RegisterModal';
 
 export default function LoginPage() {
+  const [open, setOpen] = useState(false);
+  const handleSubmitForm = async (e) => {
+    try {
+      e.preventDefault();
+    } catch (err) {
+      toast.error(err.response?.data.message);
+    }
+  };
   return (
     <div>
       <div className='pt-4 pl-10'>
@@ -25,7 +35,12 @@ export default function LoginPage() {
               Login
             </h2>
           </div>
-          <form className='mt-8 space-y-6' action='#' method='POST'>
+          <form
+            className='mt-8 space-y-6'
+            action='#'
+            method='POST'
+            onSubmit={handleSubmitForm}
+          >
             <input
               type='hidden'
               name='remember'
@@ -47,14 +62,26 @@ export default function LoginPage() {
             <div>
               <Button name={'Sign in'} />
             </div>
-            <div className='h-0.5 w-auto bg-gray-200'></div>
-            <div>
-              <Button name={'Create new'} />
-            </div>
           </form>
+          <div className='h-0.5 w-auto bg-gray-200'></div>
+          <div>
+            <Button
+              name={'Create new'}
+              onClick={() => {
+                setOpen(true);
+                console.log('sss');
+              }}
+            />
+          </div>
         </div>
       </div>
-      <RegisterModal />
+      {open ? (
+        <RegisterModal
+          onClose={() => {
+            setOpen(false);
+          }}
+        />
+      ) : null}
     </div>
   );
 }

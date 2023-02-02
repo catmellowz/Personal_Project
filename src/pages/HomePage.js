@@ -5,6 +5,7 @@ import Pic1 from '../icons/homepic1.png';
 import Pic2 from '../icons/homepic2.png';
 import Pic3 from '../icons/homepic3.png';
 import Footer from '../components/Home/Footer';
+import { Link } from 'react-router-dom';
 export default function HomePage() {
   return (
     <>
@@ -21,7 +22,9 @@ export default function HomePage() {
             </span>
           </div>
           <div className='flex ml-10 mt-5'>
-            <Button name={'BUY NOW'} />
+            <Link to={`/service`}>
+              <Button name={'BUY NOW'} />
+            </Link>
           </div>
         </div>
         <div>

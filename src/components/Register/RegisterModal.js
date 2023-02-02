@@ -3,12 +3,12 @@ import Button from '../Button';
 import Modal from '../Modal';
 import X from '../../icons/x-mark.png';
 
-export default function RegisterModal() {
+export default function RegisterModal({ onClose }) {
   return (
     <div>
-      <Modal width={500} height={100}>
+      <Modal onClose={onClose} width={500} height={100}>
         <div className='flex justify-end pr-2 pt-3'>
-          <img className='w-5' src={X} alt='logo' />
+          <img onClick={onClose} className='w-5' src={X} alt='logo' />
         </div>
         <div className='flex min-h-full items-center justify-center py-6 px-4 sm:px-6 lg:px-8'>
           <div className='w-full max-w-sm space-y-8'>
