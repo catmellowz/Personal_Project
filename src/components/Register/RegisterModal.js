@@ -1,9 +1,51 @@
+// import { toast } from 'react-toastify';
 import Input from '../Input';
 import Button from '../Button';
 import Modal from '../Modal';
 import X from '../../icons/x-mark.png';
+import * as authApi from '../../apis/auth-api';
+import { useState } from 'react';
+// import validateRegister from '../../validators/validate-register';
+
+const initialInput = {
+  firstName: '',
+  lastName: '',
+  emailOrMobile: '',
+  password: '',
+  confirmPassword: '',
+};
 
 export default function RegisterModal({ onClose }) {
+  const [input, setInput] = useState(initialInput);
+  const [error, setError] = useState({});
+
+  const handleChangeInput = (e) => {
+    // console.log(e);
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmitForm = async (e) => {
+    try {
+      // console.log(input);
+      e.preventDefault();
+      // const result = validateRegister(input);
+      // console.log(result);
+      // if (!result) {
+      //   // console.log(result, 'test');
+      //   setError(result);
+      // } else {
+      //   setError({});
+
+      await authApi.register(input);
+
+      setInput(initialInput);
+      onClose();
+      // toast.success('success register. please log in to continue');
+      // }
+    } catch (err) {
+      // toast(err.response?.data.message);
+    }
+  };
   return (
     <div>
       <Modal onClose={onClose} width={500} height={100}>
@@ -17,29 +59,35 @@ export default function RegisterModal({ onClose }) {
                 Register
               </h2>
             </div>
-            <form className='mt-8 space-y-6' action='#' method='POST'>
-              <input
-                type='hidden'
-                name='remember'
-                defaultValue='true'
-              />
+            <form
+              className='mt-8 space-y-6'
+              action='#'
+              method='POST'
+              onSubmit={handleSubmitForm}
+            >
               <div className='flex justify-between rounded-md shadow-sm'>
                 <Input
                   placeholder={'First Name'}
                   type={'text'}
-                  name={'firstname'}
+                  name={'firstName'}
+                  value={input.firstName}
+                  onChange={handleChangeInput}
                 />
                 <Input
                   placeholder={'Last Name'}
                   type={'text'}
-                  name={'lastname'}
+                  name={'lastName'}
+                  value={input.lastName}
+                  onChange={handleChangeInput}
                 />
               </div>
               <div>
                 <Input
                   placeholder={'Email or Mobile phone'}
                   type={'text'}
-                  name={'email Or mobilephone'}
+                  name={'emailOrMobile'}
+                  value={input.emailOrMobile}
+                  onChange={handleChangeInput}
                 />
               </div>
               <div>
@@ -47,19 +95,23 @@ export default function RegisterModal({ onClose }) {
                   placeholder={'Password'}
                   type={'password'}
                   name={'password'}
+                  value={input.password}
+                  onChange={handleChangeInput}
                 />
               </div>
               <div>
                 <Input
                   placeholder={'Confirm Password'}
                   type={'password'}
-                  name={'password'}
+                  name={'confirmPassword'}
+                  value={input.confirmPassword}
+                  onChange={handleChangeInput}
                 />
               </div>
 
               <div className='h-0.5 w-auto bg-gray-200'></div>
               <div>
-                <Button name={'Sign up'} />
+                <Button name={'Sign up'} type={'submit'} />
               </div>
             </form>
           </div>

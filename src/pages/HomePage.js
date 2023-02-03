@@ -53,7 +53,7 @@ export default function HomePage() {
         </div>
         <div className='flex justify-evenly'>
           <div className='w-[200px] '>
-            <img src={Pic1} />
+            <img src={Pic1} alt='pictureofpet' />
             <div className='text-sm text-orange-900 text-center'>
               It is a long established fact that a reader will be
               distracted by the readable content of a page when
@@ -61,7 +61,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className='w-[200px] '>
-            <img src={Pic2} />
+            <img src={Pic2} alt='pictureofpet' />
             <div className='text-sm text-orange-900 text-center'>
               It is a long established fact that a reader will be
               distracted by the readable content of a page when
@@ -69,7 +69,7 @@ export default function HomePage() {
             </div>
           </div>{' '}
           <div className='w-[200px] '>
-            <img src={Pic3} />
+            <img src={Pic3} alt='pictureofpet' />
             <div className='text-sm text-orange-900 text-center'>
               It is a long established fact that a reader will be
               distracted by the readable content of a page when

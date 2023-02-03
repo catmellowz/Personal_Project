@@ -85,7 +85,7 @@ export default function Nav() {
                     >
                       My order
                     </Link>
-                    <div className='block px-4 py-2 text-sm text-gray-700 hover:text-orange-500'>
+                    <div className='block px-4 py-2 text-sm text-red-600 hover:text-orange-500'>
                       Sign out
                     </div>
                   </div>

@@ -1,20 +1,52 @@
 import React, { useState } from 'react';
-import { toast } from 'react-toastify';
-import logo from '../icons/logo.png';
-import loginPic from '../icons/login-pic.jpeg';
+// import { toast } from 'react-toastify';
+// import validateRegister from '../validators/validate-register';
+// import * as authApi from '../apis/auth-api';
+// import useLoading from '../hooks/useLoading';
+import RegisterModal from '../components/Register/RegisterModal';
+
 import Input from '../components/Input';
 import Button from '../components/Button';
-import RegisterModal from '../components/Register/RegisterModal';
+
+import logo from '../icons/logo.png';
+import loginPic from '../icons/login-pic.jpeg';
+
+const initialInput = {
+  firstName: '',
+  lastName: '',
+  emailOrMobile: '',
+  password: '',
+  confirmPassword: '',
+};
 
 export default function LoginPage() {
   const [open, setOpen] = useState(false);
-  const handleSubmitForm = async (e) => {
-    try {
-      e.preventDefault();
-    } catch (err) {
-      toast.error(err.response?.data.message);
-    }
-  };
+  // const [input, setInput] = useState(initialInput);
+  // const [error, setError] = useState({});
+
+  // const { startLoading, stopLoading } = useLoading();
+
+  // const handleSubmitForm = async (e) => {
+  //   try {
+  //     e.preventDefault();
+  //     const result = validateRegister(input);
+  //     if (result) {
+  //       // console.log(result, 'test');
+  //       setError(result);
+  //     } else {
+  //       setError({});
+  //       // startLoading();
+  //       await authApi.register(input);
+  //       // stopLoading();
+  //       setInput(initialInput);
+  //       toast.success('success register. please log in to continue');
+  //     }
+  //   } catch (err) {
+  //     toast(err.response?.data.message);
+  //   } finally {
+  //     // stopLoading();
+  //   }
+  // };
   return (
     <div>
       <div className='pt-4 pl-10'>
@@ -39,7 +71,7 @@ export default function LoginPage() {
             className='mt-8 space-y-6'
             action='#'
             method='POST'
-            onSubmit={handleSubmitForm}
+            // onSubmit={handleSubmitForm}
           >
             <input
               type='hidden'
