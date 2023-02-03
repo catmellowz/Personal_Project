@@ -50,11 +50,11 @@ export default function Nav() {
             <div className='text-slate-900 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
               Login
             </div>
-            <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
+            <div className='absolute flex items-center pr-2 sm:static sm:inset-auto'>
               <button>
                 <Link to={`/cart`}>
                   <img
-                    className='pr-3 h-6 w-auto'
+                    className='pr-3 h-6 w-auto '
                     src={cart}
                     alt='logo'
                   />

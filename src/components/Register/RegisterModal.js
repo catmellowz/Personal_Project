@@ -60,7 +60,7 @@ export default function RegisterModal({ onClose }) {
               </h2>
             </div>
             <form
-              className='mt-8 space-y-6'
+              className='mt-8 space-y-6 peer'
               action='#'
               method='POST'
               onSubmit={handleSubmitForm}
@@ -73,6 +73,7 @@ export default function RegisterModal({ onClose }) {
                   value={input.firstName}
                   onChange={handleChangeInput}
                 />
+
                 <Input
                   placeholder={'Last Name'}
                   type={'text'}
