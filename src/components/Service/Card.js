@@ -26,9 +26,7 @@ export default function Card() {
           <div className='pt-2'>
             <p>THB 500</p>
           </div>
-          <button className='flex justify-center px-3 py-2 bg-orange-500 rounded-lg hover:bg-orange-600'>
-            <img className='h-6 w-auto' src={Cart} alt='logo' />
-          </button>
+          <button className='flex justify-center px-3 py-2 bg-orange-500 rounded-lg hover:bg-orange-600'></button>
         </div>
       </div>
     </div>
