@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import LogoManage from '../../icons/logo-manage.png';
 import logo from '../../icons/logo.png';
@@ -7,7 +8,7 @@ import useAuth from '../../hooks/useAuth';
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
-  const { authenticatedUser } = useAuth();
+  const { authenticatedUser, logout } = useAuth();
   return (
     <>
       <nav className='bg-orange-50 shadow-lg'>
@@ -90,7 +91,14 @@ export default function Nav() {
                     >
                       My order
                     </Link>
-                    <div className='block px-4 py-2 text-sm text-red-600 hover:text-orange-500'>
+                    <div
+                      onClick={() => {
+                        logout();
+                        setOpen(false);
+                        toast('Bye byeeee !');
+                      }}
+                      className='block px-4 py-2 text-sm text-red-600 hover:text-orange-500 cursor-pointer'
+                    >
                       Sign out
                     </div>
                   </div>
