@@ -15,7 +15,7 @@ export default function LoginForm() {
     try {
       e.preventDefault();
       await login(emailOrUsername, password);
-      toast.success('Login success');
+      toast('success login :D');
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data.message);

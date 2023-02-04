@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import LogoManage from '../../icons/logo-manage.png';
 import logo from '../../icons/logo.png';
 import cart from '../../icons/shopping-cart.svg';
+import useAuth from '../../hooks/useAuth';
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const { authenticatedUser } = useAuth();
   return (
     <>
       <nav className='bg-orange-50 shadow-lg'>
@@ -45,38 +47,40 @@ export default function Nav() {
                 </Link>
               </div>
             </div>
-            <Link to={`/login`}>
-              <div className='text-slate-900 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
-                Login
-              </div>
-            </Link>
+            {!authenticatedUser ? (
+              <Link to={`/login`}>
+                <div className='text-slate-900 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
+                  Login
+                </div>
+              </Link>
+            ) : null}
             <div className='absolute flex items-center pr-2 sm:static sm:inset-auto'>
-              <button>
+              {authenticatedUser ? (
                 <Link to={`/cart`}>
                   <img
-                    className='pr-3 h-6 w-auto '
+                    className='pr-3 mb-2 h-6 w-auto '
                     src={cart}
                     alt='logo'
                   />
                 </Link>
-              </button>
+              ) : null}
 
               <div className='relative ml-3'>
-                <div>
+                {authenticatedUser ? (
                   <button
                     type='button'
                     onClick={() => {
                       setOpen(!open);
                     }}
                   >
-                    <span className='sr-only'>Open user menu</span>
                     <img
                       className='h-8 w-8 rounded-full'
                       src={LogoManage}
                       alt='logologin'
                     />
                   </button>
-                </div>
+                ) : null}
+
                 {open ? (
                   <div className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
                     <Link

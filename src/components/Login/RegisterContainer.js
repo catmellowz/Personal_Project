@@ -28,7 +28,7 @@ export default function RegisterContainer({ onClose }) {
       // console.log(input);
       e.preventDefault();
       const result = validateRegister(input);
-      console.log(result);
+      // console.log(result);
       if (result) {
         console.log(result, 'test');
         setError(result);

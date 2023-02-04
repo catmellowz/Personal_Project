@@ -9,6 +9,7 @@ import ServicePage from '../pages/ServicePage';
 import CartPage from '../pages/CartPage';
 import Paymentpage from '../pages/PaymentPage';
 import OrderHistory from '../pages/OrderHistory';
+import RedirectAuth from '../auth/RedirectAuth';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <LoginPage />,
+    element: (
+      <RedirectAuth>
+        <LoginPage />
+      </RedirectAuth>
+    ),
   },
   {
     path: '/service',
