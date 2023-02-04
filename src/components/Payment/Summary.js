@@ -1,7 +1,7 @@
 export default function SummaryComponent() {
   return (
     <div>
-      <div className='max-w-sm p-10 m-10 bg-orange-50 rounded-lg shadow '>
+      <div className='max-w-sm p-8 bg-orange-50 rounded-lg shadow w-[300px] h-[300px]'>
         <p className='mb-2 text-lg font-semibold tracking-tight text-gray-900 '>
           Summary Order
         </p>

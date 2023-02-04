@@ -1,5 +1,8 @@
+import Button from '../components/Button';
 import Footer from '../components/Home/Footer';
 import Nav from '../components/Home/Navbar';
+import PaymentModal from '../components/Payment/PaymentModal';
+import SlipBox from '../components/Payment/SlipComponent';
 import SummaryComponent from '../components/Payment/Summary';
 
 export default function PaymentPage() {
@@ -13,12 +16,23 @@ export default function PaymentPage() {
           Payment
         </p>
       </div>
-      <div>
-        <SummaryComponent />
+      <div className='flex justify-evenly'>
+        <div>
+          <SummaryComponent />
+        </div>
+        <div>
+          <SlipBox />
+        </div>
+      </div>
+      <div className='flex justify-center p-12'>
+        <div className=' h-auto w-[150px]'>
+          <Button name={'Confirm Payment'} />
+        </div>
       </div>
       <div>
         <Footer />
       </div>
+      <PaymentModal />
     </div>
   );
 }
