@@ -20,7 +20,7 @@ export default function Nav() {
               ></button>
             </div>
             <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
-              <Link to={`/login`}>
+              <Link to={`/`}>
                 <button className='flex flex-shrink-0 items-center'>
                   <img
                     className=' h-8 w-auto'
@@ -47,9 +47,11 @@ export default function Nav() {
                 </Link>
               </div>
             </div>
-            <div className='text-slate-900 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
-              Login
-            </div>
+            <Link to={`/login`}>
+              <div className='text-slate-900 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
+                Login
+              </div>
+            </Link>
             <div className='absolute flex items-center pr-2 sm:static sm:inset-auto'>
               <button>
                 <Link to={`/cart`}>

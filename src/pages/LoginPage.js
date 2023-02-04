@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-// import { toast } from 'react-toastify';
-// import validateRegister from '../validators/validate-register';
-// import * as authApi from '../apis/auth-api';
-// import useLoading from '../hooks/useLoading';
+import { toast } from 'react-toastify';
+import validateRegister from '../validators/validate-register';
+import * as authApi from '../apis/auth-api';
+
 import RegisterModal from '../components/Register/RegisterModal';
 
 import Input from '../components/Input';
@@ -21,32 +21,29 @@ const initialInput = {
 
 export default function LoginPage() {
   const [open, setOpen] = useState(false);
-  // const [input, setInput] = useState(initialInput);
-  // const [error, setError] = useState({});
+  const [input, setInput] = useState(initialInput);
+  const [error, setError] = useState({});
 
-  // const { startLoading, stopLoading } = useLoading();
+  const handleSubmitForm = async (e) => {
+    try {
+      e.preventDefault();
+      const result = validateRegister(input);
+      if (result) {
+        // console.log(result, 'test');
+        setError(result);
+      } else {
+        setError({});
 
-  // const handleSubmitForm = async (e) => {
-  //   try {
-  //     e.preventDefault();
-  //     const result = validateRegister(input);
-  //     if (result) {
-  //       // console.log(result, 'test');
-  //       setError(result);
-  //     } else {
-  //       setError({});
-  //       // startLoading();
-  //       await authApi.register(input);
-  //       // stopLoading();
-  //       setInput(initialInput);
-  //       toast.success('success register. please log in to continue');
-  //     }
-  //   } catch (err) {
-  //     toast(err.response?.data.message);
-  //   } finally {
-  //     // stopLoading();
-  //   }
-  // };
+        await authApi.register(input);
+
+        setInput(initialInput);
+        toast.success('success register. please log in to continue');
+      }
+    } catch (err) {
+      toast(err.response?.data.message);
+    } finally {
+    }
+  };
   return (
     <div>
       <div className='pt-4 pl-10'>
@@ -61,7 +58,7 @@ export default function LoginPage() {
             alt='login-pic'
           />
         </div>
-        <div className='w-full max-w-sm space-y-8'>
+        <div className='w-full max-w-sm space-y-4'>
           <div>
             <h2 className='mt-6 text-3xl font-bold tracking-tight text-orange-600'>
               Login
@@ -71,7 +68,7 @@ export default function LoginPage() {
             className='mt-8 space-y-6'
             action='#'
             method='POST'
-            // onSubmit={handleSubmitForm}
+            onSubmit={handleSubmitForm}
           >
             <input
               type='hidden'
@@ -91,12 +88,12 @@ export default function LoginPage() {
               />
             </div>
 
-            <div>
+            <div className='flex justify-center'>
               <Button name={'Sign in'} />
             </div>
           </form>
           <div className='h-0.5 w-auto bg-gray-200'></div>
-          <div>
+          <div className='flex justify-center'>
             <Button
               name={'Create new'}
               onClick={() => {
