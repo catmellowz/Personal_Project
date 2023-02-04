@@ -10,6 +10,7 @@ import CartPage from '../pages/CartPage';
 import Paymentpage from '../pages/PaymentPage';
 import OrderHistory from '../pages/OrderHistory';
 import RedirectAuth from '../auth/RedirectAuth';
+import ProtectedRoute from '../auth/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -26,19 +27,35 @@ const router = createBrowserRouter([
   },
   {
     path: '/service',
-    element: <ServicePage />,
+    element: (
+      <ProtectedRoute>
+        <ServicePage />,
+      </ProtectedRoute>
+    ),
   },
   {
     path: '/cart',
-    element: <CartPage />,
+    element: (
+      <ProtectedRoute>
+        <CartPage />,
+      </ProtectedRoute>
+    ),
   },
   {
     path: '/payment',
-    element: <Paymentpage />,
+    element: (
+      <ProtectedRoute>
+        <Paymentpage />,
+      </ProtectedRoute>
+    ),
   },
   {
     path: '/orderhistory',
-    element: <OrderHistory />,
+    element: (
+      <ProtectedRoute>
+        <OrderHistory />,
+      </ProtectedRoute>
+    ),
   },
 ]);
 

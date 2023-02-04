@@ -29,23 +29,24 @@ export default function Nav() {
                   />
                 </button>
               </Link>
+              {authenticatedUser ? (
+                <div className='flex grow justify-center space-x-4'>
+                  <Link
+                    to={`/`}
+                    className='text-orange-500  hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium '
+                    aria-current='page'
+                  >
+                    Home
+                  </Link>
 
-              <div className='flex grow justify-center space-x-4'>
-                <Link
-                  to={`/`}
-                  className='text-orange-500  hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium '
-                  aria-current='page'
-                >
-                  Home
-                </Link>
-
-                <Link
-                  to='/service'
-                  className='text-slate-900 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
-                >
-                  Service
-                </Link>
-              </div>
+                  <Link
+                    to='/service'
+                    className='text-slate-900 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
+                  >
+                    Service
+                  </Link>
+                </div>
+              ) : null}
             </div>
             {!authenticatedUser ? (
               <Link to={`/login`}>
