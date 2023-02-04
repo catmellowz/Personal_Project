@@ -58,7 +58,7 @@ export default function Nav() {
               {authenticatedUser ? (
                 <Link to={`/cart`}>
                   <img
-                    className='pr-3 mb-2 h-6 w-auto '
+                    className='pr-3 mb-2 first:h-6 w-auto '
                     src={cart}
                     alt='logo'
                   />
