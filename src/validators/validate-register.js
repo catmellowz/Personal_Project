@@ -7,11 +7,8 @@ const registerSchema = Joi.object({
   lastName: Joi.string().trim().required().messages({
     'string.empty': 'last name is required',
   }),
-  emailOrMobile: Joi.alternatives()
-    .try(
-      Joi.string().email({ tlds: false }),
-      Joi.string().pattern(/^[0-9]{10}$/)
-    )
+  emailOrUsername: Joi.alternatives()
+    .try(Joi.string().email({ tlds: false }), Joi.string())
     .messages({
       'alternatives.match':
         'must be valid email address or modile number',

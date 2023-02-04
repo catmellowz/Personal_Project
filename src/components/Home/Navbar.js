@@ -15,8 +15,6 @@ export default function Nav() {
               <button
                 type='button'
                 className='inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-orange-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
-                aria-controls='mobile-menu'
-                aria-expanded='false'
               ></button>
             </div>
             <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>

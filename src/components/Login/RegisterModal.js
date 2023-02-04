@@ -1,16 +1,16 @@
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Input from '../Input';
 import Button from '../Button';
 import Modal from '../Modal';
 import X from '../../icons/x-mark.png';
 import * as authApi from '../../apis/auth-api';
 import { useState } from 'react';
-// import validateRegister from '../../validators/validate-register';
+import validateRegister from '../../validators/validate-register';
 
 const initialInput = {
   firstName: '',
   lastName: '',
-  emailOrMobile: '',
+  emailOrUsername: '',
   password: '',
   confirmPassword: '',
 };
@@ -28,29 +28,34 @@ export default function RegisterModal({ onClose }) {
     try {
       // console.log(input);
       e.preventDefault();
-      // const result = validateRegister(input);
-      // console.log(result);
-      // if (!result) {
-      //   // console.log(result, 'test');
-      //   setError(result);
-      // } else {
-      //   setError({});
+      const result = validateRegister(input);
+      console.log(result);
+      if (result) {
+        console.log(result, 'test');
+        setError(result);
+      } else {
+        setError({});
 
-      await authApi.register(input);
+        await authApi.register(input);
 
-      setInput(initialInput);
-      onClose();
-      // toast.success('success register. please log in to continue');
-      // }
+        setInput(initialInput);
+        onClose();
+        toast('success Register !');
+      }
     } catch (err) {
-      // toast(err.response?.data.message);
+      toast.error(err.response?.data.message);
     }
   };
   return (
     <div>
       <Modal onClose={onClose} width={500} height={1000}>
         <div className='flex justify-end pr-2 pt-3'>
-          <img onClick={onClose} className='w-5' src={X} alt='logo' />
+          <img
+            onClick={onClose}
+            className='w-5 cursor-pointer'
+            src={X}
+            alt='logo'
+          />
         </div>
         <div className='flex min-h-full items-center justify-center py-6 px-4 sm:px-6 lg:px-8'>
           <div className='w-full space-y-8'>
@@ -61,8 +66,6 @@ export default function RegisterModal({ onClose }) {
             </div>
             <form
               className='mt-8 space-y-6 peer'
-              action='#'
-              method='POST'
               onSubmit={handleSubmitForm}
             >
               <div className='flex justify-between rounded-md shadow-sm'>
@@ -72,6 +75,7 @@ export default function RegisterModal({ onClose }) {
                   name={'firstName'}
                   value={input.firstName}
                   onChange={handleChangeInput}
+                  error={error.firstName}
                 />
 
                 <Input
@@ -84,10 +88,10 @@ export default function RegisterModal({ onClose }) {
               </div>
               <div>
                 <Input
-                  placeholder={'Email or Mobile phone'}
+                  placeholder={'Email or Username'}
                   type={'text'}
-                  name={'emailOrMobile'}
-                  value={input.emailOrMobile}
+                  name={'emailOrUsername'}
+                  value={input.emailOrUsername}
                   onChange={handleChangeInput}
                 />
               </div>
@@ -111,7 +115,7 @@ export default function RegisterModal({ onClose }) {
               </div>
 
               <div className='h-0.5 w-auto bg-gray-200'></div>
-              <div>
+              <div className='flex justify-center'>
                 <Button name={'Sign up'} type={'submit'} />
               </div>
             </form>
