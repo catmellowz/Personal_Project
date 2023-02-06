@@ -63,11 +63,13 @@ export default function Nav() {
               {authenticatedUser ? (
                 <Link to={`/cart`}>
                   <div className='relative'>
-                    <div className='absolute left-3.5 bottom-3 h-[20px] w-[20px] border-white bg-red-500 rounded-full'>
-                      <p className='text-center text-white text-sm'>
-                        {countCart}
-                      </p>
-                    </div>
+                    {countCart > 0 ? (
+                      <div className='absolute left-3.5 bottom-3 h-[20px] w-[20px] border-white bg-red-500 rounded-full'>
+                        <p className='text-center text-white text-sm'>
+                          {countCart}
+                        </p>
+                      </div>
+                    ) : null}
                     <img
                       className='pr-3 mb-2 first:h-6 w-auto '
                       src={cart}
