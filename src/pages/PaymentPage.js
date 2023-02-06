@@ -7,7 +7,7 @@ import SlipBox from '../components/Payment/SlipComponent';
 import SummaryComponent from '../components/Payment/Summary';
 
 export default function PaymentPage() {
-  const [file, setFile] = useState();
+  const [file, setFile] = useState(null);
   return (
     <div>
       <div>
@@ -34,11 +34,8 @@ export default function PaymentPage() {
       <div>
         <Footer />
       </div>
-      {file && (
-        <>
-          <PaymentModal />
-        </>
-      )}
+
+      {/* <PaymentModal /> */}
     </div>
   );
 }
