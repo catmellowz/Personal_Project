@@ -39,7 +39,9 @@ export default function ServicePage() {
             <div className='flex justify-center'>
               <Card
                 key={el.id}
-                onClick={addCart}
+                onClick={() => {
+                  addCart(el.id);
+                }}
                 image={el.image}
                 title={el.title}
                 description={el.description}
