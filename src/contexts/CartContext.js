@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import * as cartApi from '../apis/cart-api';
 
 export const CartContext = createContext();
@@ -8,8 +8,10 @@ export default function CartContextProvider({ children }) {
 
   const addCart = async (serviceId) => {
     // setCountCart(countCart + 1);
-    const res = await cartApi.createCart({ serviceId });
+    await cartApi.createCart({ serviceId });
     //get service from cart
+    const res = await cartApi.amountCart();
+    setCountCart(res.data.amount);
     console.log(res);
   };
 
@@ -18,6 +20,17 @@ export default function CartContextProvider({ children }) {
       setCountCart(countCart - 1);
     }
   };
+
+  useEffect(() => {
+    const fetchAmountCart = async () => {
+      try {
+        const res = await cartApi.amountCart();
+        setCountCart(res.data.amount);
+      } catch (err) {}
+    };
+    fetchAmountCart();
+  }, []);
+
   return (
     <CartContext.Provider value={{ countCart, addCart, deleteCart }}>
       {children}
