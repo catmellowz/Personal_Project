@@ -3,8 +3,10 @@ import Nav from '../components/Home/Navbar';
 import Footer from '../components/Home/Footer';
 import OrderCart from '../components/Cart/OrderCart';
 import Button from '../components/Button';
+import useCart from '../hooks/useCart';
 
 export default function CartPage() {
+  const { deleteCart } = useCart();
   return (
     <div>
       <Nav />
@@ -14,7 +16,7 @@ export default function CartPage() {
         </p>
       </div>
       <div>
-        <OrderCart />
+        <OrderCart onClick={deleteCart} />
       </div>
       <div className='flex justify-between'>
         <p className=' pl-20 text-lg font-bold text-slate-900 '>

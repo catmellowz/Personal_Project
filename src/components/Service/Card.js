@@ -1,7 +1,7 @@
 import CardProduct from '../../icons/servicecard.jpeg';
 import Cart from '../../icons/cartplus.png';
 
-export default function Card() {
+export default function Card({ onClick }) {
   return (
     <div className='w-[250px] bg-orange-50 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
       <div>
@@ -26,7 +26,10 @@ export default function Card() {
           <div className='pt-2'>
             <p>THB 500</p>
           </div>
-          <button className='flex justify-center px-3 py-2 bg-orange-500 rounded-lg hover:bg-orange-600'>
+          <button
+            onClick={onClick}
+            className='flex justify-center px-3 py-2 bg-orange-500 rounded-lg hover:bg-orange-600'
+          >
             <img className='h-6 w-auto' src={Cart} alt='logo' />
           </button>
         </div>

@@ -1,8 +1,11 @@
 import Nav from '../components/Home/Navbar';
 import Footer from '../components/Home/Footer';
 import Card from '../components/Service/Card';
+import useCart from '../hooks/useCart';
 
 export default function ServicePage() {
+  const { addCart } = useCart();
+
   return (
     <div>
       <Nav />
@@ -15,7 +18,7 @@ export default function ServicePage() {
         </p>
       </div>
       <div className='flex flex-nowarp justify-evenly'>
-        <Card />
+        <Card onClick={addCart} />
         <Card />
         <Card />
       </div>

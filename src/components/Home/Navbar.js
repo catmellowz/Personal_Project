@@ -5,16 +5,19 @@ import LogoManage from '../../icons/logo-manage.png';
 import logo from '../../icons/logo.png';
 import cart from '../../icons/shopping-cart.svg';
 import useAuth from '../../hooks/useAuth';
+import useCart from '../../hooks/useCart';
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const { authenticatedUser, logout } = useAuth();
+  const { countCart } = useCart();
+  // console.log(countCart);
   return (
     <>
       <nav className='bg-orange-50 shadow-lg'>
         <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
-          <div className='relative flex h-16 items-center justify-between'>
-            <div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
+          <div className=' flex h-16 items-center justify-between'>
+            <div className=' inset-y-0 left-0 flex items-center sm:hidden'>
               <button
                 type='button'
                 className='inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-orange-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
@@ -56,14 +59,21 @@ export default function Nav() {
                 </div>
               </Link>
             ) : null}
-            <div className='absolute flex items-center pr-2 sm:static sm:inset-auto'>
+            <div className='flex items-center pr-2 sm:static sm:inset-auto'>
               {authenticatedUser ? (
                 <Link to={`/cart`}>
-                  <img
-                    className='pr-3 mb-2 first:h-6 w-auto '
-                    src={cart}
-                    alt='logo'
-                  />
+                  <div className='relative'>
+                    <div className='absolute left-3.5 bottom-3 h-[20px] w-[20px] border-white bg-red-500 rounded-full'>
+                      <p className='text-center text-white text-sm'>
+                        {countCart}
+                      </p>
+                    </div>
+                    <img
+                      className='pr-3 mb-2 first:h-6 w-auto '
+                      src={cart}
+                      alt='logo'
+                    />
+                  </div>
                 </Link>
               ) : null}
 
