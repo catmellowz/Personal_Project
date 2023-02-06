@@ -3,7 +3,6 @@ import RegisterContainer from '../auth/RegisterContainer';
 import logo from '../icons/logo.png';
 import loginPic from '../icons/login-pic.jpeg';
 import LoginForm from '../components/Login/LoginForm';
-import RegisterModal from '../components/Login/RegisterModal';
 
 export default function LoginPage() {
   return (
