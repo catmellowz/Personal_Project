@@ -22,6 +22,15 @@ export default function CartPage() {
     fetchCartItem();
   }, []);
 
+  const sumAmount = () => {
+    if (amountCartItem.service.rows) {
+      const sum = amountCartItem.service.rows.reduce((sum, value) => {
+        return value.price + sum;
+      }, 0);
+      return sum;
+    }
+  };
+
   return (
     <div>
       <Nav />
@@ -31,13 +40,14 @@ export default function CartPage() {
         </p>
       </div>
       <div>
-        {amountCartItem.service.rows?.map((el) => (
-          <OrderCart
-            title={el.Service.title}
-            price={el.Service.price}
-            onClick={deleteCart}
-          />
-        ))}
+        {/* {amountCartItem.service.rows &&
+          amountCartItem.service.rows?.map((el) => (
+            <OrderCart
+              title={el.Service.title}
+              price={el.Service.price}
+              onClick={deleteCart}
+            />
+          ))} */}
       </div>
       <div className='flex justify-between'>
         <p className=' pl-20 text-lg font-bold text-slate-900 '>
