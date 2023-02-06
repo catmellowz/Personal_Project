@@ -9,13 +9,13 @@ import * as cartApi from '../apis/cart-api';
 
 export default function CartPage() {
   const { deleteCart } = useCart();
-  const [amountCartItem, setAmountCartItem] = useState({});
+  const [amountCartItem, setAmountCartItem] = useState([]);
 
   useEffect(() => {
     const fetchCartItem = async () => {
       try {
         const res = await cartApi.cartItem();
-        setAmountCartItem(res.data);
+        setAmountCartItem(res.data.modifiedService);
         console.log(res);
       } catch (err) {}
     };
@@ -23,12 +23,10 @@ export default function CartPage() {
   }, []);
 
   const sumAmount = () => {
-    if (amountCartItem.service.rows) {
-      const sum = amountCartItem.service.rows.reduce((sum, value) => {
-        return value.price + sum;
-      }, 0);
-      return sum;
-    }
+    const sum = amountCartItem.reduce((sum, value) => {
+      return value.price + sum;
+    }, 0);
+    return sum;
   };
 
   return (
@@ -40,21 +38,22 @@ export default function CartPage() {
         </p>
       </div>
       <div>
-        {/* {amountCartItem.service.rows &&
-          amountCartItem.service.rows?.map((el) => (
-            <OrderCart
-              title={el.Service.title}
-              price={el.Service.price}
-              onClick={deleteCart}
-            />
-          ))} */}
+        {amountCartItem.map((el) => (
+          <OrderCart
+            key={el.id}
+            amount={el.amount}
+            title={el.title}
+            price={el.price}
+            onClick={deleteCart}
+          />
+        ))}
       </div>
       <div className='flex justify-between'>
         <p className=' pl-20 text-lg font-bold text-slate-900 '>
           Total
         </p>
         <p className='pr-20 text-lg font-bold text-slate-900 '>
-          THB 500
+          THB {sumAmount()}
         </p>
       </div>
 

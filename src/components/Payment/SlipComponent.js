@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Upload from '../../icons/file-upload.png';
 
 export default function SlipBox() {

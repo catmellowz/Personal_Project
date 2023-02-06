@@ -1,6 +1,6 @@
 import CardProduct from '../../icons/servicecard.jpeg';
 
-export default function OrderCart({ onClick, title, price }) {
+export default function OrderCart({ onClick, title, price, amount }) {
   return (
     <>
       <div>
@@ -17,7 +17,7 @@ export default function OrderCart({ onClick, title, price }) {
           </div>
           <div className='flex items-center '>
             <p className='font-sm w-[200px] text-gray-700 dark:text-gray-400'>
-              x 1
+              x {amount}
             </p>
           </div>
           <div className='flex items-center'>

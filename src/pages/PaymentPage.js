@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Button from '../components/Button';
 import Footer from '../components/Home/Footer';
 import Nav from '../components/Home/Navbar';
@@ -6,6 +7,7 @@ import SlipBox from '../components/Payment/SlipComponent';
 import SummaryComponent from '../components/Payment/Summary';
 
 export default function PaymentPage() {
+  const [file, setFile] = useState();
   return (
     <div>
       <div>
@@ -32,7 +34,11 @@ export default function PaymentPage() {
       <div>
         <Footer />
       </div>
-      <PaymentModal />
+      {file && (
+        <>
+          <PaymentModal />
+        </>
+      )}
     </div>
   );
 }
