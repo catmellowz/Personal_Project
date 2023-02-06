@@ -4,9 +4,24 @@ import Footer from '../components/Home/Footer';
 import OrderCart from '../components/Cart/OrderCart';
 import Button from '../components/Button';
 import useCart from '../hooks/useCart';
+import { useEffect, useState } from 'react';
+import * as cartApi from '../apis/cart-api';
 
 export default function CartPage() {
   const { deleteCart } = useCart();
+  const [amountCartItem, setAmountCartItem] = useState({});
+
+  useEffect(() => {
+    const fetchCartItem = async () => {
+      try {
+        const res = await cartApi.cartItem();
+        setAmountCartItem(res.data);
+        console.log(res);
+      } catch (err) {}
+    };
+    fetchCartItem();
+  }, []);
+
   return (
     <div>
       <Nav />
@@ -16,7 +31,13 @@ export default function CartPage() {
         </p>
       </div>
       <div>
-        <OrderCart onClick={deleteCart} />
+        {amountCartItem.service.rows?.map((el) => (
+          <OrderCart
+            title={el.Service.title}
+            price={el.Service.price}
+            onClick={deleteCart}
+          />
+        ))}
       </div>
       <div className='flex justify-between'>
         <p className=' pl-20 text-lg font-bold text-slate-900 '>

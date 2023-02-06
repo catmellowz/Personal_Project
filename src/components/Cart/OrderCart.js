@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import CardProduct from '../../icons/servicecard.jpeg';
 
-export default function OrderCart({ onClick }) {
+export default function OrderCart({ onClick, title, price }) {
   return (
     <>
       <div>
@@ -13,7 +12,7 @@ export default function OrderCart({ onClick }) {
           />
           <div className='flex items-center w-[400px] p-4'>
             <p className=' text-sm font-bold text-center tracking-tight text-gray-900 dark:text-white'>
-              Pet shower
+              {title}
             </p>
           </div>
           <div className='flex items-center '>
@@ -23,7 +22,7 @@ export default function OrderCart({ onClick }) {
           </div>
           <div className='flex items-center'>
             <p className='w-[300px] font-sm text-gray-700 dark:text-gray-400'>
-              THB 500
+              THB {price}
             </p>
           </div>
           <div className='flex items-center w-[300px]'>

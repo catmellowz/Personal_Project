@@ -32,7 +32,13 @@ export default function CartContextProvider({ children }) {
   }, []);
 
   return (
-    <CartContext.Provider value={{ countCart, addCart, deleteCart }}>
+    <CartContext.Provider
+      value={{
+        countCart,
+        addCart,
+        deleteCart,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
