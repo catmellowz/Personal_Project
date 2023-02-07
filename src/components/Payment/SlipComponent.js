@@ -3,7 +3,6 @@ import Upload from '../../icons/file-upload.png';
 
 export default function SlipBox() {
   const [file, setFile] = useState(null);
-  const ref = useRef();
 
   return (
     <div>

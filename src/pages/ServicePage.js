@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import Nav from '../components/Home/Navbar';
 import Footer from '../components/Home/Footer';
 import Card from '../components/Service/Card';
@@ -15,7 +16,8 @@ export default function ServicePage() {
       try {
         const res = await serviceApi.getService();
         setServices(res.data.services);
-        console.log(res);
+
+        // console.log(res);
       } catch (err) {}
     };
 

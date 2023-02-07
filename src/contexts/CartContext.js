@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { createContext, useEffect, useState } from 'react';
 import * as cartApi from '../apis/cart-api';
 
@@ -12,6 +13,8 @@ export default function CartContextProvider({ children }) {
     //get service from cart
     const res = await cartApi.amountCart();
     setCountCart(res.data.amount);
+    toast.success('item added to cart');
+
     console.log(res);
   };
 
@@ -19,6 +22,7 @@ export default function CartContextProvider({ children }) {
     if (countCart >= 1) {
       setCountCart(countCart - 1);
     }
+    toast.error('item deleted');
   };
 
   useEffect(() => {
@@ -26,6 +30,7 @@ export default function CartContextProvider({ children }) {
       try {
         const res = await cartApi.amountCart();
         setCountCart(res.data.amount);
+        toast.success('item added to cart');
       } catch (err) {}
     };
     fetchAmountCart();
