@@ -53,7 +53,7 @@ const router = createBrowserRouter([
     path: '/orderhistory',
     element: (
       <ProtectedRoute>
-        <OrderHistory />,
+        <OrderHistory />
       </ProtectedRoute>
     ),
   },

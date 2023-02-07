@@ -5,7 +5,7 @@ import Router from './routes/Router';
 export default function App() {
   return (
     <>
-      <Router />;
+      <Router />
       <ToastContainer
         autoClose='3000'
         theme='light'

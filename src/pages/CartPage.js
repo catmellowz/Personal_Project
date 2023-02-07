@@ -3,22 +3,21 @@ import Nav from '../components/Home/Navbar';
 import Footer from '../components/Home/Footer';
 import OrderCart from '../components/Cart/OrderCart';
 import Button from '../components/Button';
-import useCart from '../hooks/useCart';
 import { useEffect, useState } from 'react';
 import * as cartApi from '../apis/cart-api';
+import { toast } from 'react-toastify';
 
 export default function CartPage() {
-  const { deleteCart } = useCart();
   const [amountCartItem, setAmountCartItem] = useState([]);
-
+  const fetchCartItem = async () => {
+    try {
+      const res = await cartApi.cartItem();
+      setAmountCartItem(res.data.modifiedService);
+      console.log(res);
+    } catch (err) {}
+  };
+  //call item in cart when refresh or go another page and back
   useEffect(() => {
-    const fetchCartItem = async () => {
-      try {
-        const res = await cartApi.cartItem();
-        setAmountCartItem(res.data.modifiedService);
-        console.log(res);
-      } catch (err) {}
-    };
     fetchCartItem();
   }, []);
 
@@ -27,6 +26,12 @@ export default function CartPage() {
       return value.price + sum;
     }, 0);
     return sum;
+  };
+
+  const deleteCart = async (id) => {
+    const res = await cartApi.deleteItem(id);
+    await fetchCartItem();
+    toast.error('item deleted');
   };
 
   return (
@@ -44,7 +49,9 @@ export default function CartPage() {
             amount={el.amount}
             title={el.title}
             price={el.price}
-            onClick={deleteCart}
+            onClick={() => {
+              deleteCart(el.id);
+            }}
           />
         ))}
       </div>

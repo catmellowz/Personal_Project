@@ -1,4 +1,3 @@
-import { toast } from 'react-toastify';
 import Nav from '../components/Home/Navbar';
 import Footer from '../components/Home/Footer';
 import Card from '../components/Service/Card';
