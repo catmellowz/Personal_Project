@@ -6,7 +6,7 @@ import Button from '../Button';
 import useAuth from '../../hooks/useAuth';
 
 export default function LoginForm() {
-  const [emailOrUsername, setEmailOrUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const { login } = useAuth();
@@ -14,7 +14,7 @@ export default function LoginForm() {
   const handleSubmitForm = async (e) => {
     try {
       e.preventDefault();
-      await login(emailOrUsername, password);
+      await login(email, password);
       toast('success login :D');
     } catch (err) {
       console.log(err);
@@ -26,11 +26,11 @@ export default function LoginForm() {
       <form className='mt-8 space-y-6' onSubmit={handleSubmitForm}>
         <div className='space-y-4 rounded-md shadow-sm'>
           <Input
-            placeholder={'Email or Username'}
+            placeholder={'Email'}
             type={'text'}
-            name={'email Or username'}
-            value={emailOrUsername}
-            onChange={(e) => setEmailOrUsername(e.target.value)}
+            name={'email'}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Input
             placeholder={'Password'}

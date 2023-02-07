@@ -10,7 +10,7 @@ import validateRegister from '../../validators/validate-register';
 const initialInput = {
   firstName: '',
   lastName: '',
-  emailOrUsername: '',
+  email: '',
   password: '',
   confirmPassword: '',
 };
@@ -90,8 +90,8 @@ export default function RegisterModal({ onClose }) {
                 <Input
                   placeholder={'Email or Username'}
                   type={'text'}
-                  name={'emailOrUsername'}
-                  value={input.emailOrUsername}
+                  name={'email'}
+                  value={input.email}
                   onChange={handleChangeInput}
                 />
               </div>

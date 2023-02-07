@@ -9,6 +9,7 @@ import ServicePage from '../pages/ServicePage';
 import CartPage from '../pages/CartPage';
 import Paymentpage from '../pages/PaymentPage';
 import OrderHistory from '../pages/OrderHistory';
+import AdminPage from '../pages/AdminPage';
 import RedirectAuth from '../auth/RedirectAuth';
 import ProtectedRoute from '../auth/ProtectedRoute';
 
@@ -57,6 +58,7 @@ const router = createBrowserRouter([
       </ProtectedRoute>
     ),
   },
+  { path: '/admin', element: <AdminPage /> },
 ]);
 
 export default function Router() {
