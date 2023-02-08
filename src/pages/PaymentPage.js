@@ -36,7 +36,7 @@ export default function PaymentPage() {
         </div>
       </div>
       <div className='flex justify-center p-12'>
-        <div className=' h-auto w-[150px]'>
+        <div className=' h-auto w-[160px]'>
           <Button name={'Confirm Payment'} />
         </div>
       </div>
