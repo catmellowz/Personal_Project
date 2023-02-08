@@ -12,7 +12,7 @@ export default function CartPage() {
   const fetchCartItem = async () => {
     try {
       const res = await cartApi.cartItem();
-      setAmountCartItem(res.data.modifiedService);
+      setAmountCartItem(res.data.serviceInCart);
       console.log(res);
     } catch (err) {}
   };
@@ -46,7 +46,7 @@ export default function CartPage() {
         {amountCartItem.map((el) => (
           <OrderCart
             key={el.id}
-            amount={el.amount}
+            amount={el.total_amount}
             title={el.title}
             price={el.price}
             onClick={() => {
