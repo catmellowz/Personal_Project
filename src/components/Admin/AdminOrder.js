@@ -1,31 +1,24 @@
+import DetailOrder from './DetailOrder';
+
 export default function AdminOrder() {
   return (
-    <div className='flex justify-center p-10'>
-      <table class='table-fixed'>
-        <thead>
-          <tr>
-            <th>Song</th>
-            <th>Artist</th>
-            <th>Year</th>
+    <div className='flex justify-center pt-10 text-sm'>
+      <table class='table-fixed border w-[800px]'>
+        <thead className='border'>
+          <tr className='bg-orange-50'>
+            <th>Order id</th>
+            <th>User id</th>
+            <th>Customer Name</th>
+            <th>date</th>
+            <th>total price</th>
+            <th>details</th>
+            <th>Status</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-            <td>Malcolm Lockyer</td>
-            <td>1961</td>
-          </tr>
-          <tr>
-            <td>Witchy Woman</td>
-            <td>The Eagles</td>
-            <td>1972</td>
-          </tr>
-          <tr>
-            <td>Shining Star</td>
-            <td>Earth, Wind, and Fire</td>
-            <td>1975</td>
-          </tr>
-        </tbody>
+        <DetailOrder />
+        <DetailOrder />
+        <DetailOrder />
+        <DetailOrder />
       </table>
     </div>
   );
