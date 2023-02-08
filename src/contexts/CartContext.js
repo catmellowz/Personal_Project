@@ -17,29 +17,49 @@ export default function CartContextProvider({ children }) {
 
     console.log(res);
   };
-
-  const deleteCart = () => {
-    if (countCart >= 1) {
-      setCountCart(countCart - 1);
-    }
-    toast.error('item deleted');
+  const fetchAmountCart = async () => {
+    try {
+      const res = await cartApi.amountCart();
+      setCountCart(res.data.amount);
+    } catch (err) {}
   };
-
   useEffect(() => {
-    const fetchAmountCart = async () => {
-      try {
-        const res = await cartApi.amountCart();
-        setCountCart(res.data.amount);
-      } catch (err) {}
-    };
     fetchAmountCart();
   }, []);
 
+  const [amountCartItem, setAmountCartItem] = useState([]);
+  const fetchCartItem = async () => {
+    try {
+      const res = await cartApi.cartItem();
+      setAmountCartItem(res.data.serviceInCart);
+      console.log(res);
+    } catch (err) {}
+  };
+
+  const sumAmount = () => {
+    const sum = amountCartItem.reduce((sum, value) => {
+      return +value.Service.price * +value.total_amount + sum;
+    }, 0);
+    return sum;
+  };
+
+  const deleteCart = async (cartId) => {
+    try {
+      const res = await cartApi.deleteItem(cartId);
+      // console.log(res.data);
+    } catch (err) {}
+    await fetchCartItem();
+    await fetchAmountCart();
+    toast.error('item deleted');
+  };
   return (
     <CartContext.Provider
       value={{
         countCart,
         addCart,
+        amountCartItem,
+        fetchCartItem,
+        sumAmount,
         deleteCart,
       }}
     >

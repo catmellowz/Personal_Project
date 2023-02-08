@@ -3,36 +3,19 @@ import Nav from '../components/Home/Navbar';
 import Footer from '../components/Home/Footer';
 import OrderCart from '../components/Cart/OrderCart';
 import Button from '../components/Button';
-import { useEffect, useState } from 'react';
-import * as cartApi from '../apis/cart-api';
-import { toast } from 'react-toastify';
+import { useEffect } from 'react';
+import useCart from '../hooks/useCart';
+// import * as cartApi from '../apis/cart-api';
+// import { toast } from 'react-toastify';
 
 export default function CartPage() {
-  const [amountCartItem, setAmountCartItem] = useState([]);
-  const fetchCartItem = async () => {
-    try {
-      const res = await cartApi.cartItem();
-      setAmountCartItem(res.data.serviceInCart);
-      console.log(res);
-    } catch (err) {}
-  };
+  const { amountCartItem, fetchCartItem, sumAmount, deleteCart } =
+    useCart();
+
   //call item in cart when refresh or go another page and back
   useEffect(() => {
     fetchCartItem();
   }, []);
-
-  const sumAmount = () => {
-    const sum = amountCartItem.reduce((sum, value) => {
-      return value.price + sum;
-    }, 0);
-    return sum;
-  };
-
-  const deleteCart = async (id) => {
-    const res = await cartApi.deleteItem(id);
-    await fetchCartItem();
-    toast.error('item deleted');
-  };
 
   return (
     <div>
@@ -45,12 +28,12 @@ export default function CartPage() {
       <div>
         {amountCartItem.map((el) => (
           <OrderCart
-            key={el.id}
+            key={el.Service.id}
             amount={el.total_amount}
-            title={el.title}
-            price={el.price}
+            title={el.Service.title}
+            price={el.Service.price}
             onClick={() => {
-              deleteCart(el.id);
+              deleteCart(el.service_id);
             }}
           />
         ))}

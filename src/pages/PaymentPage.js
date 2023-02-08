@@ -1,13 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Button from '../components/Button';
 import Footer from '../components/Home/Footer';
 import Nav from '../components/Home/Navbar';
 import PaymentModal from '../components/Payment/PaymentModal';
 import SlipBox from '../components/Payment/SlipComponent';
 import SummaryComponent from '../components/Payment/Summary';
+import useCart from '../hooks/useCart';
 
 export default function PaymentPage() {
+  const { amountCartItem, fetchCartItem, sumAmount } = useCart();
   const [file, setFile] = useState(null);
+
+  useEffect(() => {
+    fetchCartItem();
+  }, []);
   return (
     <div>
       <div>
@@ -20,7 +26,10 @@ export default function PaymentPage() {
       </div>
       <div className='flex justify-evenly'>
         <div>
-          <SummaryComponent />
+          <SummaryComponent
+            summary={amountCartItem}
+            sumAmount={sumAmount}
+          />
         </div>
         <div>
           <SlipBox />
