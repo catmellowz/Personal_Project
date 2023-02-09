@@ -10,7 +10,7 @@ export default function ServicePage() {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    console.log('aaa');
+    // console.log('aaa');
     const fetchService = async () => {
       try {
         const res = await serviceApi.getService();

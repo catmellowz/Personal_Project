@@ -8,14 +8,12 @@ export default function OrderHistory() {
     <div>
       <div>
         <Nav />
+        <p className='flex justify-center p-10 text-3xl font-bold text-slate-900 '>
+          My Order
+        </p>
         <div className='flex justify-center p-10'>
-          <div className='m-10'>
-            <p className='flex justify-center text-3xl font-bold text-slate-900 '>
-              My Order
-            </p>
-          </div>
+          <div className='m-10'></div>
           <div className='flex'>
-            <CartHistory />
             <div className=' flex items-center'>
               <StatusOrder />
             </div>

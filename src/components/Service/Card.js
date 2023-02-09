@@ -9,11 +9,11 @@ export default function Card({
   price,
 }) {
   return (
-    <div className=' w-[250px] bg-orange-50 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
+    <div className=' w-[250px] h-[450px] bg-orange-50 border border-gray-200 rounded-lg shadow '>
       <div>
         <img
-          className='rounded-t-lg'
-          src={CardProduct || image}
+          className='rounded-t-lg h-[200px] w-[250px]'
+          src={image || CardProduct}
           alt='cardproduct'
         />
       </div>

@@ -12,7 +12,7 @@ export default function RegisterContainer() {
           name={'Create new'}
           onClick={() => {
             setOpen(true);
-            console.log('sss');
+            // console.log('sss');
           }}
         />
       </div>

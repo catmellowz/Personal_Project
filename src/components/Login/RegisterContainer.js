@@ -30,7 +30,7 @@ export default function RegisterContainer({ onClose }) {
       const result = validateRegister(input);
       // console.log(result);
       if (result) {
-        console.log(result, 'test');
+        // console.log(result, 'test');
         setError(result);
       } else {
         setError({});
