@@ -1,9 +1,7 @@
 import { useState, useRef } from 'react';
 import Upload from '../../icons/file-upload.png';
 
-export default function SlipBox() {
-  const [file, setFile] = useState(null);
-
+export default function SlipBox({ file, setFile }) {
   return (
     <div>
       <div className='flex items-center justify-center bg-orange-50 w-[300px] h-[350px]  rounded shadow'>

@@ -6,10 +6,34 @@ import PaymentModal from '../components/Payment/PaymentModal';
 import SlipBox from '../components/Payment/SlipComponent';
 import SummaryComponent from '../components/Payment/Summary';
 import useCart from '../hooks/useCart';
+import * as pyApi from '../apis/payment-api';
 
 export default function PaymentPage() {
   const { amountCartItem, fetchCartItem, sumAmount } = useCart();
   const [file, setFile] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const getSlip = async () => {
+    try {
+      const formData = new FormData();
+      if (file) {
+        formData.append('slipImage', file);
+      }
+      const res = await pyApi.getSlip(formData);
+      console.log(res);
+
+      return res.data;
+    } catch (err) {}
+  };
+
+  const createOrder = async () => {
+    try {
+      const link = await getSlip();
+
+      const res = await pyApi.createOrder({ slipImage: link.result });
+      setShowModal(true);
+    } catch (err) {}
+  };
 
   useEffect(() => {
     fetchCartItem();
@@ -32,19 +56,18 @@ export default function PaymentPage() {
           />
         </div>
         <div>
-          <SlipBox />
+          <SlipBox file={file} setFile={setFile} />
         </div>
       </div>
       <div className='flex justify-center p-12'>
         <div className=' h-auto w-[160px]'>
-          <Button name={'Confirm Payment'} />
+          <Button name={'Confirm Payment'} onClick={createOrder} />
         </div>
       </div>
       <div>
         <Footer />
       </div>
-
-      {/* <PaymentModal /> */}
+      {showModal ? <PaymentModal /> : ''}
     </div>
   );
 }

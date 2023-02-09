@@ -1,5 +1,3 @@
-import * as cartApi from '../../apis/cart-api';
-
 export default function SummaryComponent({ summary, sumAmount }) {
   return (
     <div>
