@@ -7,6 +7,7 @@ import SlipBox from '../components/Payment/SlipComponent';
 import SummaryComponent from '../components/Payment/Summary';
 import useCart from '../hooks/useCart';
 import * as pyApi from '../apis/payment-api';
+import * as cartApi from '../apis/cart-api';
 
 export default function PaymentPage() {
   const { amountCartItem, fetchCartItem, sumAmount } = useCart();
@@ -31,7 +32,14 @@ export default function PaymentPage() {
       const link = await getSlip();
 
       const res = await pyApi.createOrder({ slipImage: link.result });
+      await clearCart();
       setShowModal(true);
+    } catch (err) {}
+  };
+
+  const clearCart = async () => {
+    try {
+      const res = await cartApi.clearCart();
     } catch (err) {}
   };
 

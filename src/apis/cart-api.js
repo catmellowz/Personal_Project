@@ -9,3 +9,5 @@ export const amountCart = () => axios.get('/cart');
 export const cartItem = () => axios.get('/cart/cartItem');
 //amount item in cart page
 export const deleteItem = (cartId) => axios.delete(`/cart/${cartId}`);
+
+export const clearCart = () => axios.delete('/cart');
