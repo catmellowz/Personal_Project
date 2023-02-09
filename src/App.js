@@ -9,7 +9,7 @@ export default function App() {
       <ToastContainer
         autoClose='3000'
         theme='light'
-        position='bottom-center'
+        position='bottom-right'
       />
     </>
   );
