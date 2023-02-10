@@ -63,7 +63,7 @@ export default function PaymentPage() {
         <Nav />
       </div>
       <div>
-        <p className='flex justify-center pt-8 m-10 text-3xl font-bold text-slate-900 '>
+        <p className='flex justify-center pt-8 m-10 text-3xl font-bold '>
           Payment
         </p>
       </div>

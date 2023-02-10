@@ -14,11 +14,9 @@ export default function PaymentModal() {
           <p className=' text-3xl font-bold  text-lime-500'>
             Payment Successful
           </p>
-          <p className='text-lg font-bold  text-slate-900'>
-            THANK YOU!!
-          </p>
+          <p className='text-lg font-bold  '>THANK YOU!!</p>
 
-          <p className='text-center text-sm font-bold pb-8 text-slate-900'>
+          <p className='text-center text-sm font-bold pb-8 '>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Se d sed orci velit. Donec euismod, sem at mattis scel
           </p>

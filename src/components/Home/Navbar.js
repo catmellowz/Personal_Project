@@ -19,12 +19,13 @@ export default function Nav() {
           <div className=' inset-y-0 left-0 flex items-center'>
             <button
               type='button'
-              className='inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-orange-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
+              className='inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-orange-400 hover:text-black 
+              '
             ></button>
           </div>
-          <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
+          <div className='flex flex-1 items-center justify-center '>
             <Link to={`/`}>
-              <button className='flex flex-shrink-0 items-center'>
+              <button className='flex flex-shrink-0 items-center '>
                 <img className=' h-8 w-auto' src={logo} alt='logo' />
               </button>
             </Link>
@@ -32,15 +33,14 @@ export default function Nav() {
               <div className='flex grow justify-center space-x-4'>
                 <Link
                   to={`/`}
-                  className='text-orange-500  hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium '
-                  aria-current='page'
+                  className=' hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium '
                 >
                   Home
                 </Link>
 
                 <Link
-                  to='/service'
-                  className='text-slate-900 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
+                  to={`/service`}
+                  className=' hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
                 >
                   Service
                 </Link>
@@ -49,7 +49,7 @@ export default function Nav() {
           </div>
           {!authenticatedUser ? (
             <Link to={`/login`}>
-              <div className='text-slate-900 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
+              <div className=' hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
                 Login
               </div>
             </Link>
@@ -104,7 +104,7 @@ export default function Nav() {
                       setOpen(false);
                       toast('Bye byeeee !');
                     }}
-                    className='block px-4 py-2 text-sm text-red-600 hover:text-orange-500 cursor-pointer'
+                    className='block px-4 py-2 text-sm text-red-600 hover:text-orange-500 '
                   >
                     Sign out
                   </div>

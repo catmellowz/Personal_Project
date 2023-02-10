@@ -32,7 +32,7 @@ export default function HomePage() {
         </div>
       </div>
       <div>
-        <span className='flex justify-center text-3xl font-bold text-slate-900 '>
+        <span className='flex justify-center text-3xl font-bold '>
           Our Service
         </span>
         <div className='flex justify-center mr-32 ml-32 mt-10 mb-10'>

@@ -23,9 +23,7 @@ export default function Card({
             {title}
           </p>
           <div className='h-[114px]'>
-            <p className='text-xs mb-3 text-slate-900 '>
-              {description}
-            </p>
+            <p className='text-xs mb-3  '>{description}</p>
           </div>
         </div>
         <div className='flex justify-between'>

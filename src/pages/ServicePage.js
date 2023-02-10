@@ -27,7 +27,7 @@ export default function ServicePage() {
     <div>
       <Nav />
       <div className='m-10'>
-        <p className='flex justify-center text-3xl font-bold text-slate-900 '>
+        <p className='flex justify-center text-3xl font-bold '>
           Our Service
         </p>
         <p className='flex justify-center '>

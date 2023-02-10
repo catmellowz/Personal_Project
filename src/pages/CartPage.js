@@ -21,7 +21,7 @@ export default function CartPage() {
     <div>
       <Nav />
       <div className='m-10'>
-        <p className='flex justify-center text-3xl font-bold text-slate-900 '>
+        <p className='flex justify-center text-3xl font-bold '>
           My Cart
         </p>
       </div>
@@ -39,12 +39,8 @@ export default function CartPage() {
         ))}
       </div>
       <div className='flex justify-between'>
-        <p className=' pl-20 text-lg font-bold text-slate-900 '>
-          Total
-        </p>
-        <p className='pr-20 text-lg font-bold text-slate-900 '>
-          THB {sumAmount()}
-        </p>
+        <p className=' pl-20 text-lg font-bold t'>Total</p>
+        <p className='pr-20 text-lg font-bold '>THB {sumAmount()}</p>
       </div>
 
       <div className='flex justify-center ml-10 mt-5'>
