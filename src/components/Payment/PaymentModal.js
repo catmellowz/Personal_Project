@@ -6,7 +6,7 @@ export default function PaymentModal() {
   return (
     <Modal
       width={400}
-      height={500}
+      height={300}
       //   className='flex flex-col items-center justify-center'
     >
       <div className='py-6 px-4'>

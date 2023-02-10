@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import Button from '../components/Button';
 import Footer from '../components/Home/Footer';
 import Nav from '../components/Home/Navbar';
@@ -13,6 +14,7 @@ export default function PaymentPage() {
   const { amountCartItem, fetchCartItem, sumAmount } = useCart();
   const [file, setFile] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
 
   const getSlip = async () => {
     try {
@@ -29,17 +31,26 @@ export default function PaymentPage() {
 
   const createOrder = async () => {
     try {
-      const link = await getSlip();
+      if (file) {
+        setisLoading(true);
+        const link = await getSlip();
 
-      const res = await pyApi.createOrder({ slipImage: link.result });
-      await clearCart();
-      setShowModal(true);
+        const res = await pyApi.createOrder({
+          slipImage: link.result,
+        });
+        await clearCart();
+        setShowModal(true);
+        setisLoading(false);
+      } else {
+        toast.error('Please attach pay slip to confirm your order.');
+      }
     } catch (err) {}
   };
 
   const clearCart = async () => {
     try {
       const res = await cartApi.clearCart();
+      await fetchCartItem();
     } catch (err) {}
   };
 
@@ -68,9 +79,19 @@ export default function PaymentPage() {
         </div>
       </div>
       <div className='flex justify-center p-12'>
-        <div className=' h-auto w-[160px]'>
-          <Button name={'Confirm Payment'} onClick={createOrder} />
-        </div>
+        {!isLoading ? (
+          <div className=' h-auto w-[160px]'>
+            <Button name={'Confirm Payment'} onClick={createOrder} />
+          </div>
+        ) : (
+          <button
+            type='button'
+            className=' flex justify-center items-center rounded-md border border-transparent bg-orange-500 py-2 px-4 text-sm font-medium text-white hover:bg-orange-600 '
+          >
+            <div className='m-2 bg-white h-[10px] w-[10px] animate-spin'></div>
+            processing ...
+          </button>
+        )}
       </div>
       <div>
         <Footer />
