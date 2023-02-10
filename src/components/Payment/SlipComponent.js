@@ -1,4 +1,3 @@
-import { useState, useRef } from 'react';
 import Upload from '../../icons/file-upload.png';
 
 export default function SlipBox({ file, setFile }) {
@@ -9,10 +8,15 @@ export default function SlipBox({ file, setFile }) {
           <img
             src={file ? URL.createObjectURL(file) : Upload}
             className='w-[250px] h-[300px]'
+            alt='file'
           />
         ) : (
           <div className='flex flex-col items-center justify-center'>
-            <img src={Upload} className='w-[100px] h-[100px]' />
+            <img
+              src={Upload}
+              className='w-[100px] h-[100px]'
+              alt='icon'
+            />
             <p>Please upload slip</p>
           </div>
         )}

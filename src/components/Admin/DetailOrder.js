@@ -11,7 +11,7 @@ export default function DetailOrder() {
         <td>1,500</td>
         <td>
           <button>
-            <img src={detail} className='h-[20px]' />
+            <img src={detail} className='h-[20px]' alt='icon' />
           </button>
         </td>
         <td className='flex gap-2'>

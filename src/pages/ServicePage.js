@@ -37,9 +37,8 @@ export default function ServicePage() {
       <div className='px-40'>
         <div className='grid grid-rows-2 grid-flow-col gap-4'>
           {services.map((el) => (
-            <div className='flex justify-center'>
+            <div className='flex justify-center' key={el.id}>
               <Card
-                key={el.id}
                 onClick={() => {
                   addCart(el.id);
                 }}
