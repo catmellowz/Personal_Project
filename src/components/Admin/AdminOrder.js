@@ -1,9 +1,12 @@
 import DetailOrder from './DetailOrder';
 
-export default function AdminOrder() {
+export default function AdminOrder({ orderAdmin, date }) {
+  const fullName = (firstName, lastName) => {
+    return `${firstName} ${lastName} `;
+  };
   return (
     <div className='flex justify-center pt-10 text-sm'>
-      <table class='table-fixed border w-[800px]'>
+      <table className='table-fixed border w-[800px]'>
         <thead className='border'>
           <tr className='bg-orange-50'>
             <th>Order id</th>
@@ -15,10 +18,19 @@ export default function AdminOrder() {
             <th>Status</th>
           </tr>
         </thead>
-        <DetailOrder />
-        <DetailOrder />
-        <DetailOrder />
-        <DetailOrder />
+        {orderAdmin.map((el) => (
+          <DetailOrder
+            key={el.id}
+            OrderId={el.id}
+            userId={el.userId}
+            CustomerName={fullName(
+              el.User.firstName,
+              el.User.lastName
+            )}
+            date={date(el.createdAt)}
+            totalPrice={el.totalPrice}
+          />
+        ))}
       </table>
     </div>
   );

@@ -1,14 +1,20 @@
 import detail from '../../icons/file-search.png';
 
-export default function DetailOrder() {
+export default function DetailOrder({
+  OrderId,
+  userId,
+  CustomerName,
+  totalPrice,
+  date,
+}) {
   return (
     <tbody className='text-center'>
       <tr>
-        <td>1</td>
-        <td>1</td>
-        <td>John Smith</td>
-        <td>02/03/2023</td>
-        <td>1,500</td>
+        <td>{OrderId}</td>
+        <td>{userId}</td>
+        <td>{CustomerName}</td>
+        <td>{date}</td>
+        <td>{totalPrice}</td>
         <td>
           <button>
             <img src={detail} className='h-[20px]' alt='icon' />

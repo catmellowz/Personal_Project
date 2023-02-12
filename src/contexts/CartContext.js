@@ -10,6 +10,7 @@ export const CartContext = createContext();
 export default function CartContextProvider({ children }) {
   const [countCart, setCountCart] = useState(0);
   const [order, setOrder] = useState([]);
+  const [orderAdmin, setOrderAdmin] = useState([]);
   const { authenticatedUser } = useAuth();
 
   const addCart = async (serviceId) => {
@@ -68,6 +69,29 @@ export default function CartContextProvider({ children }) {
     fetchOrder();
   }, []);
 
+  const fetchOrderAdmin = async () => {
+    try {
+      const res = await pyApi.orderAdmin();
+      setOrderAdmin(res.data);
+    } catch (err) {}
+  };
+  useEffect(() => {
+    fetchOrderAdmin();
+  }, []);
+
+  //modified date get createdAt modified creadtedAt then locale
+  const date = (createdAt) => {
+    const modifiedDate = new Date(createdAt);
+    // console.log(createdAt);
+    const options = {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    };
+
+    return modifiedDate.toLocaleDateString('en-US', options);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -79,6 +103,8 @@ export default function CartContextProvider({ children }) {
         deleteCart,
         order,
         fetchOrder,
+        date,
+        orderAdmin,
       }}
     >
       {children}

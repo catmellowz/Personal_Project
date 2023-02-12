@@ -6,19 +6,7 @@ import ListOrder from '../components/MyOrder/ListOrder';
 import useCart from '../hooks/useCart';
 
 export default function OrderHistory() {
-  const { order, fetchOrder } = useCart();
-  //modified date get createdAt modified creadtedAt then locale
-  const date = (createdAt) => {
-    const modifiedDate = new Date(createdAt);
-    // console.log(createdAt);
-    const options = {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    };
-
-    return modifiedDate.toLocaleDateString('en-US', options);
-  };
+  const { order, fetchOrder, date } = useCart();
 
   useEffect(() => {
     fetchOrder();

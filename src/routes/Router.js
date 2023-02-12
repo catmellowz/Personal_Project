@@ -58,7 +58,14 @@ const router = createBrowserRouter([
       </ProtectedRoute>
     ),
   },
-  { path: '/admin', element: <AdminPage /> },
+  {
+    path: '/admin',
+    element: (
+      <ProtectedRoute>
+        <AdminPage />
+      </ProtectedRoute>
+    ),
+  },
 ]);
 
 export default function Router() {
