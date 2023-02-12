@@ -6,6 +6,16 @@ import useCart from '../hooks/useCart';
 
 export default function OrderHistory() {
   const { order } = useCart();
+  //modified date
+  const date = (createdAt) => {
+    const modifiedDate = new Date();
+    const options = {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    };
+    return modifiedDate.toLocaleDateString('en-US', options);
+  };
   return (
     <div>
       <div>
@@ -20,6 +30,14 @@ export default function OrderHistory() {
               className='p-10 bg-orange-50 w-11/12 shadow-sm rounded-lg'
               key={el.id}
             >
+              <div className='flex justify-between'>
+                <div className='text-orange-500 text-lg'>
+                  OrderId : {el.id}
+                </div>
+                <div className='text-orange-500 text-lg pb-10'>
+                  Date: {date(el.createdAt)}
+                </div>
+              </div>
               <div className='grid grid-cols-4'>
                 <div className='col-span-3'>
                   {/* map contents in card */}
