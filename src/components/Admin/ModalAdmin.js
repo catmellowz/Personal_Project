@@ -7,8 +7,8 @@ export default function ModalAdmin({ onClose, orderDetail }) {
   return (
     <div>
       <Modal>
-        <div className='p-10 bg-orange-50 w-[1000px] shadow-sm rounded-lg m-10'>
-          <div className='absolute flex justify-end'>
+        <div className='p-10 bg-orange-50 w-[1000px] h-[500px] shadow-sm rounded-lg m-10 overflow-auto'>
+          <div className='absolute flex justify-end '>
             <button
               className=' relative left-[930px] bottom-[30px] text-[20px]'
               onClick={onClose}
