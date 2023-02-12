@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Nav from '../components/Home/Navbar';
 import Footer from '../components/Home/Footer';
 import StatusOrder from '../components/MyOrder/Status';
@@ -5,17 +6,23 @@ import ListOrder from '../components/MyOrder/ListOrder';
 import useCart from '../hooks/useCart';
 
 export default function OrderHistory() {
-  const { order } = useCart();
-  //modified date
+  const { order, fetchOrder } = useCart();
+  //modified date get createdAt modified creadtedAt then locale
   const date = (createdAt) => {
-    const modifiedDate = new Date();
+    const modifiedDate = new Date(createdAt);
+    // console.log(createdAt);
     const options = {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
     };
+
     return modifiedDate.toLocaleDateString('en-US', options);
   };
+
+  useEffect(() => {
+    fetchOrder();
+  }, []);
   return (
     <div>
       <div>
@@ -27,7 +34,7 @@ export default function OrderHistory() {
         <div className='grid justify-items-center'>
           {order.map((el) => (
             <div
-              className='p-10 bg-orange-50 w-11/12 shadow-sm rounded-lg'
+              className='p-10 bg-orange-50 w-11/12 shadow-sm rounded-lg m-10'
               key={el.id}
             >
               <div className='flex justify-between'>

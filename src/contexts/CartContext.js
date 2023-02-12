@@ -58,13 +58,13 @@ export default function CartContextProvider({ children }) {
     toast.error('item deleted');
   };
 
+  const fetchOrder = async () => {
+    try {
+      const res = await pyApi.getOrderHistory();
+      setOrder(res.data);
+    } catch (err) {}
+  };
   useEffect(() => {
-    const fetchOrder = async () => {
-      try {
-        const res = await pyApi.getOrderHistory();
-        setOrder(res.data);
-      } catch (err) {}
-    };
     fetchOrder();
   }, []);
 
@@ -78,6 +78,7 @@ export default function CartContextProvider({ children }) {
         sumAmount,
         deleteCart,
         order,
+        fetchOrder,
       }}
     >
       {children}
