@@ -6,6 +6,7 @@ export default function DetailOrder({
   CustomerName,
   totalPrice,
   date,
+  onClick,
 }) {
   return (
     <tbody className='text-center'>
@@ -16,7 +17,7 @@ export default function DetailOrder({
         <td>{date}</td>
         <td>{totalPrice}</td>
         <td>
-          <button>
+          <button onClick={onClick}>
             <img src={detail} className='h-[20px]' alt='icon' />
           </button>
         </td>

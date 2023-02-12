@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import DetailOrder from './DetailOrder';
+import ModalAdmin from './ModalAdmin';
 
 export default function AdminOrder({ orderAdmin, date }) {
+  const [orderDetail, setOrderDetail] = useState('');
+  const [open, setOpen] = useState(false);
   const fullName = (firstName, lastName) => {
     return `${firstName} ${lastName} `;
   };
@@ -18,20 +22,34 @@ export default function AdminOrder({ orderAdmin, date }) {
             <th>Status</th>
           </tr>
         </thead>
+
         {orderAdmin.map((el) => (
           <DetailOrder
-            key={el.id}
-            OrderId={el.id}
-            userId={el.userId}
+            key={el.order.id}
+            OrderId={el.order.id}
+            userId={el.order.userId}
             CustomerName={fullName(
-              el.User.firstName,
-              el.User.lastName
+              el.order.User.firstName,
+              el.order.User.lastName
             )}
-            date={date(el.createdAt)}
-            totalPrice={el.totalPrice}
+            date={date(el.order.createdAt)}
+            totalPrice={el.order.totalPrice}
+            onClick={() => {
+              setOpen(true);
+              setOrderDetail(el);
+            }}
           />
         ))}
       </table>
+      {open ? (
+        <ModalAdmin
+          onClose={() => {
+            setOpen(false);
+            console.log('ss');
+          }}
+          orderDetail={orderDetail}
+        />
+      ) : null}
     </div>
   );
 }

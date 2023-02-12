@@ -9,7 +9,7 @@ export default function AdminPage() {
     <>
       <div>
         <Admin />
-        <AdminOrder orderAdmin={orderAdmin} date={date} />
+        <AdminOrder orderAdmin={orderAdmin} date={date}></AdminOrder>
       </div>
     </>
   );
