@@ -9,3 +9,6 @@ export const createOrder = (link) => axios.post('/payment', link);
 export const getOrderHistory = () => axios.get('/orderhistory');
 
 export const orderAdmin = () => axios.get('/orderhistory/admin');
+
+export const statusOrder = (status) =>
+  axios.put('/payment/status', status);

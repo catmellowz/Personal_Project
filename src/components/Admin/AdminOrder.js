@@ -9,8 +9,8 @@ export default function AdminOrder({ orderAdmin, date }) {
     return `${firstName} ${lastName} `;
   };
   return (
-    <div className='flex justify-center pt-10 text-sm'>
-      <table className='table-fixed border w-[800px]'>
+    <div className='flex justify-center pt-10 text-sm ]'>
+      <table className='table-fixed border w-[1300px]'>
         <thead className='border'>
           <tr className='bg-orange-50'>
             <th>Order id</th>
@@ -34,6 +34,7 @@ export default function AdminOrder({ orderAdmin, date }) {
             )}
             date={date(el.order.createdAt)}
             totalPrice={el.order.totalPrice}
+            status={el.order.status}
             onClick={() => {
               setOpen(true);
               setOrderDetail(el);
