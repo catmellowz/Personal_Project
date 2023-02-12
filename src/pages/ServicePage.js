@@ -35,7 +35,7 @@ export default function ServicePage() {
         </p>
       </div>
       <div className='px-40'>
-        <div className='grid grid-rows-2 grid-flow-col gap-4'>
+        <div className='grid grid-cols-3 gap-4'>
           {services.map((el) => (
             <div className='flex justify-center' key={el.id}>
               <Card

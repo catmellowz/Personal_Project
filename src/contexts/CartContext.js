@@ -1,13 +1,17 @@
 import { toast } from 'react-toastify';
 import { createContext, useEffect, useState } from 'react';
 import * as cartApi from '../apis/cart-api';
+import * as pyApi from '../apis/payment-api';
+
 import useAuth from '../hooks/useAuth';
 
 export const CartContext = createContext();
 
 export default function CartContextProvider({ children }) {
   const [countCart, setCountCart] = useState(0);
+  const [order, setOrder] = useState([]);
   const { authenticatedUser } = useAuth();
+
   const addCart = async (serviceId) => {
     // setCountCart(countCart + 1);
     await cartApi.createCart({ serviceId });
@@ -53,6 +57,17 @@ export default function CartContextProvider({ children }) {
     await fetchAmountCart();
     toast.error('item deleted');
   };
+
+  useEffect(() => {
+    const fetchOrder = async () => {
+      try {
+        const res = await pyApi.getOrderHistory();
+        setOrder(res.data);
+      } catch (err) {}
+    };
+    fetchOrder();
+  }, []);
+
   return (
     <CartContext.Provider
       value={{
@@ -62,6 +77,7 @@ export default function CartContextProvider({ children }) {
         fetchCartItem,
         sumAmount,
         deleteCart,
+        order,
       }}
     >
       {children}

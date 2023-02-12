@@ -1,17 +1,11 @@
-import StatusOrder from '../../components/MyOrder/Status';
-
-export default function ListOrder() {
+export default function ListOrder({ title, amount, price }) {
   return (
-    <div className='flex items-center '>
-      <div className='flex justify-between w-[1000px]'>
-        <div>pet shower</div>
-        <div>x 1</div>
-        <div>THB 500</div>
+    <div>
+      <div className='grid grid-cols-3 justify-items-center'>
+        <div>{title}</div>
+        <div>x {amount}</div>
+        <div>THB {price}</div>
       </div>
-
-      {/* <div className=' flex items-center justify-center w-[200px] '>
-        <StatusOrder />
-      </div> */}
     </div>
   );
 }

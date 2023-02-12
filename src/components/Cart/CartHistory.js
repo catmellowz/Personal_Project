@@ -1,6 +1,6 @@
 import CardProduct from '../../icons/servicecard.jpeg';
 
-export default function CartHistory() {
+export default function CartHistory({ title, amount, price }) {
   return (
     <>
       <div>
@@ -12,17 +12,17 @@ export default function CartHistory() {
           />
           <div className='flex items-center w-[400px] p-4'>
             <p className=' text-sm font-bold text-center tracking-tight text-gray-900 dark:text-white'>
-              Pet shower
+              {title}
             </p>
           </div>
           <div className='flex items-center '>
             <p className='font-sm w-[200px] text-gray-700 dark:text-gray-400'>
-              x 1
+              x {amount}
             </p>
           </div>
           <div className='flex items-center'>
             <p className='w-[300px] font-sm text-gray-700 dark:text-gray-400'>
-              THB 500
+              THB {price}
             </p>
           </div>
         </div>
