@@ -1,5 +1,4 @@
 import Modal from '../Modal';
-import slip from '../../icons/sliptest.jpeg';
 import useCart from '../../hooks/useCart';
 
 export default function ModalAdmin({ onClose, orderDetail }) {
