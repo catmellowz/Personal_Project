@@ -1,4 +1,4 @@
-import RegisterContainer from '../auth/RegisterContainer';
+import RegisterContainer from '../auth/RegisterModalContainer';
 
 import logo from '../icons/logo.png';
 import loginPic from '../icons/login-pic.jpeg';
