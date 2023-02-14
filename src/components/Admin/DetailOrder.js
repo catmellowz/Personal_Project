@@ -9,6 +9,7 @@ export default function DetailOrder({
   date,
   onClick,
   status,
+  fetchOrderAdmin,
 }) {
   const updateStatus = async (status) => {
     try {
@@ -16,6 +17,7 @@ export default function DetailOrder({
         orderId: OrderId,
         status,
       });
+      await fetchOrderAdmin();
     } catch (err) {}
   };
 

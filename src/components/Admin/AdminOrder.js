@@ -42,6 +42,7 @@ export default function AdminOrder({ orderAdmin, date }) {
               setOpen(true);
               setOrderDetail(el);
             }}
+            fetchOrderAdmin={fetchOrderAdmin}
           />
         ))}
       </table>
