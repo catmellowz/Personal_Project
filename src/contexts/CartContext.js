@@ -21,7 +21,7 @@ export default function CartContextProvider({ children }) {
     setCountCart(res.data.amount);
     toast.success('item added to cart');
 
-    console.log(res);
+    // console.log(res);
   };
   const fetchAmountCart = async () => {
     try {
@@ -38,7 +38,7 @@ export default function CartContextProvider({ children }) {
     try {
       const res = await cartApi.cartItem();
       setAmountCartItem(res.data.serviceInCart);
-      console.log(res);
+      // console.log(res);
     } catch (err) {}
   };
 

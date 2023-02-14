@@ -29,7 +29,7 @@ export default function SlipBox({ file, setFile }) {
               //when choose pic and choose again then cancel wont be define but still the same pic
               setFile(e.target.files[0]);
             }
-            console.log(e.target.files);
+            // console.log(e.target.files);
           }}
         ></input>
       </div>
