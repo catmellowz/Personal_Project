@@ -17,14 +17,14 @@ export default function ModalAdmin({ onClose, orderDetail }) {
           </div>
           <div className='flex justify-between'>
             <div className='text-orange-500 text-lg'>
-              OrderId : {orderDetail.order.id}
+              OrderId : {orderDetail.id}
             </div>
             <div className='text-orange-500 text-lg pb-10'>
-              Date: {date(orderDetail.order.createdAt)}
+              Date: {date(orderDetail.createdAt)}
             </div>
           </div>
           <div className='col-span-3'>
-            {orderDetail.order.OrderItems.map((e) => (
+            {orderDetail.OrderItems.map((e) => (
               <div className='grid grid-cols-3' key={e.id}>
                 <div className='gird justify-items-start'>
                   {e.Service.title}
@@ -37,7 +37,7 @@ export default function ModalAdmin({ onClose, orderDetail }) {
           <div className='h-0.5 w-auto bg-gray-200 m-10'></div>
           <div className='flex justify-evenly text-lg '>
             <div>Total</div>
-            <div>THB {orderDetail.order.totalPrice}</div>
+            <div>THB {orderDetail.totalPrice}</div>
           </div>
           <div className='text-center text-lg font-bold text-orange-500 pt-10'>
             Pay Slip
@@ -45,7 +45,7 @@ export default function ModalAdmin({ onClose, orderDetail }) {
           <div className='flex justify-center p-10'>
             <img
               className='h-[500px] shadow-lg border rounded-lg border-orange-500 '
-              src={orderDetail.order.slipImage}
+              src={orderDetail.slipImage}
               alt='slip'
             />
           </div>

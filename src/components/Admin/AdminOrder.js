@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import DetailOrder from './DetailOrder';
 import ModalAdmin from './ModalAdmin';
+import useCart from '../../hooks/useCart';
 
 export default function AdminOrder({ orderAdmin, date }) {
   const [orderDetail, setOrderDetail] = useState('');
@@ -8,6 +9,8 @@ export default function AdminOrder({ orderAdmin, date }) {
   const fullName = (firstName, lastName) => {
     return `${firstName} ${lastName} `;
   };
+
+  const { fetchOrderAdmin } = useCart();
   return (
     <div className='flex justify-center pt-10 text-sm ]'>
       <table className='table-fixed border w-[1300px]'>
@@ -25,16 +28,16 @@ export default function AdminOrder({ orderAdmin, date }) {
 
         {orderAdmin.map((el) => (
           <DetailOrder
-            key={el.order.id}
-            OrderId={el.order.id}
-            userId={el.order.userId}
+            key={el.id}
+            OrderId={el.id}
+            userId={el.userId}
             CustomerName={fullName(
-              el.order.User.firstName,
-              el.order.User.lastName
+              el.User.firstName,
+              el.User.lastName
             )}
-            date={date(el.order.createdAt)}
-            totalPrice={el.order.totalPrice}
-            status={el.order.status}
+            date={date(el.createdAt)}
+            totalPrice={el.totalPrice}
+            status={el.status}
             onClick={() => {
               setOpen(true);
               setOrderDetail(el);

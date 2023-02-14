@@ -65,9 +65,6 @@ export default function CartContextProvider({ children }) {
       setOrder(res.data);
     } catch (err) {}
   };
-  useEffect(() => {
-    fetchOrder();
-  }, []);
 
   const fetchOrderAdmin = async () => {
     try {
@@ -105,6 +102,7 @@ export default function CartContextProvider({ children }) {
         fetchOrder,
         date,
         orderAdmin,
+        fetchOrderAdmin,
       }}
     >
       {children}

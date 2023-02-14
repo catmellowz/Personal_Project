@@ -1,10 +1,14 @@
+import { useEffect } from 'react';
 import Admin from '../components/Admin/Admin';
 import AdminOrder from '../components/Admin/AdminOrder';
 import useCart from '../hooks/useCart';
 
 export default function AdminPage() {
-  const { orderAdmin, date } = useCart();
+  const { orderAdmin, date, fetchOrderAdmin } = useCart();
 
+  useEffect(() => {
+    fetchOrderAdmin();
+  }, []);
   return (
     <>
       <div>
