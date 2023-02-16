@@ -11,7 +11,12 @@ import * as pyApi from '../apis/payment-api';
 import * as cartApi from '../apis/cart-api';
 
 export default function PaymentPage() {
-  const { amountCartItem, fetchCartItem, sumAmount } = useCart();
+  const {
+    amountCartItem,
+    fetchCartItem,
+    sumAmount,
+    fetchAmountCart,
+  } = useCart();
   const [file, setFile] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setisLoading] = useState(false);
@@ -51,6 +56,7 @@ export default function PaymentPage() {
     try {
       const res = await cartApi.clearCart();
       await fetchCartItem();
+      await fetchAmountCart();
     } catch (err) {}
   };
 

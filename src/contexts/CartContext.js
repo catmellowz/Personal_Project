@@ -103,6 +103,7 @@ export default function CartContextProvider({ children }) {
         date,
         orderAdmin,
         fetchOrderAdmin,
+        fetchAmountCart,
       }}
     >
       {children}
