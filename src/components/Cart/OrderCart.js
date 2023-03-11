@@ -1,13 +1,19 @@
 import CardProduct from '../../icons/servicecard.jpeg';
 
-export default function OrderCart({ onClick, title, price, amount }) {
+export default function OrderCart({
+  onClick,
+  title,
+  price,
+  amount,
+  image,
+}) {
   return (
     <>
       <div>
         <div className='flex justify-evenly'>
           <img
-            className='ml-10 h-96 md:h-auto md:w-48 rounded'
-            src={CardProduct}
+            className='ml-10 h-[200px]'
+            src={image}
             alt='cardproduct'
           />
           <div className='flex items-center w-[400px] p-4'>

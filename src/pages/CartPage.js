@@ -29,6 +29,7 @@ export default function CartPage() {
         {amountCartItem.map((el) => (
           <OrderCart
             key={el.Service.id}
+            image={el.Service.image}
             amount={el.total_amount}
             title={el.Service.title}
             price={el.Service.price}
